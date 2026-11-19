@@ -1,0 +1,11 @@
+snowflake_organization_name = "your-org-name"
+snowflake_account_name      = "your-account-name"
+snowflake_admin_user        = "ACCOUNTADMIN_USER"
+snowflake_admin_password    = "CHANGE_ME"
+prod_dbt_password        = "CHANGE_ME"
+cicd_user_password       = "CHANGE_ME"
+gina_analyst_password    = "CHANGE_ME"
+vicient_analyst_password = "CHANGE_ME"
+derek_analyst_password   = "CHANGE_ME"
+database_name          = "SALESFORCE_ANALYTICS_DB"
+warehouse_auto_suspend = 60

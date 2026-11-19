@@ -1,0 +1,2 @@
+# Local Development
+Use Python 3.12+. Run `pytest -q tests` then the local Salesforce generator and `python -m ingestion.cdc_extract`. Local storage emulates S3 before you provide AWS credentials. dbt still uses Snowflake environment variables and `dbt deps/debug/build`. Astronomer remains under `dbt-dags/`; run `astro dev start` after configuring `AIRFLOW_CONN_SNOWFLAKE_DEFAULT` plus S3 environment variables.

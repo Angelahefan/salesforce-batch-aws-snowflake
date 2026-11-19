@@ -1,0 +1,6 @@
+version: "3.1"
+services:
+  scheduler: {volumes: ["../dbt:/usr/local/airflow/dags/dbt:ro", "../:/usr/local/airflow/project:ro"]}
+  dag-processor: {volumes: ["../dbt:/usr/local/airflow/dags/dbt:ro", "../:/usr/local/airflow/project:ro"]}
+  api-server: {volumes: ["../dbt:/usr/local/airflow/dags/dbt:ro", "../:/usr/local/airflow/project:ro"]}
+  triggerer: {volumes: ["../dbt:/usr/local/airflow/dags/dbt:ro", "../:/usr/local/airflow/project:ro"]}

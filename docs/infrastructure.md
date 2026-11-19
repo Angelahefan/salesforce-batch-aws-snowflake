@@ -1,0 +1,2 @@
+# Infrastructure
+Terraform remains split into `terraform/aws` and `terraform/snowflake`. AWS keeps private dbt artifacts/docs + CloudFront/OAC + GitHub OIDC and adds a separate private Salesforce RAW bucket. Snowflake uses `SALESFORCE_ANALYTICS_DB`, RAW/SOURCE/INTERMEDIATE/STAGING/MARTS/SNAPSHOTS/ELEMENTARY and `SALESFORCE_ADMIN`, `SALESFORCE_TRANSFORMER`, `SALESFORCE_ANALYST`. Five warehouses remain XSMALL through XLARGE with 60-second default auto-suspend.

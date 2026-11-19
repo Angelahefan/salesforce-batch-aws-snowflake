@@ -1,0 +1,2 @@
+# Salesforce Analytics Pipeline
+Preserve existing dbt/Snowflake/Kimball/CI/CD/Terraform/Airflow/Elementary architecture. Source is a local Salesforce simulator. Normal ingestion is CDC incremental INSERT/UPDATE/DELETE, checkpointed by replay_id, written as Parquet to S3 Hive partitions, loaded to Snowflake RAW, then transformed by dbt. Never advance checkpoints before S3 and Snowflake load/audit succeed.

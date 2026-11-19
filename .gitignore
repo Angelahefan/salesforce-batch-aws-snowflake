@@ -1,0 +1,13 @@
+.venv/
+dbt_venv/
+__pycache__/
+.pytest_cache/
+data/*.db
+local_s3/
+.env
+terraform.tfvars
+*.tfstate
+*.tfstate.*
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/

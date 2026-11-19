@@ -1,0 +1,9 @@
+import os
+from datetime import datetime
+from cosmos import DbtDag,ProjectConfig,ProfileConfig,ExecutionConfig,RenderConfig
+from cosmos.profiles import SnowflakeUserPasswordProfileMapping
+def _notify_failure(context):
+ ti=context.get('task_instance') or context.get('ti');print(f"[salesforce_dbt_transformation] FAILED {getattr(ti,'dag_id','unknown')}.{getattr(ti,'task_id','unknown')}: {context.get('exception')!r}")
+default_args={'depends_on_past':False,'retries':2,'on_failure_callback':_notify_failure}
+profile_config=ProfileConfig(profile_name='salesforce_transformation',target_name='prod',profile_mapping=SnowflakeUserPasswordProfileMapping(conn_id='snowflake_default',profile_args={'database':'SALESFORCE_ANALYTICS_DB','schema':'SOURCE','warehouse':'SALESFORCE_COMPUTE_MEDIUM','role':'SALESFORCE_TRANSFORMER'}))
+dbt_transformation_dag=DbtDag(project_config=ProjectConfig('/usr/local/airflow/dags/dbt'),operator_args={'install_deps':True},profile_config=profile_config,execution_config=ExecutionConfig(dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt"),render_config=RenderConfig(exclude=['package:elementary']),default_args=default_args,schedule='0 19 * * *',start_date=datetime(2025,8,1),catchup=False,dag_id='salesforce_dbt_transformation',description='Production Salesforce dbt transformation',tags=['dbt','salesforce','transformation','prod'])

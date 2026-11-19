@@ -1,0 +1,5 @@
+astronomer-cosmos
+apache-airflow-providers-snowflake
+boto3
+pandas
+pyarrow

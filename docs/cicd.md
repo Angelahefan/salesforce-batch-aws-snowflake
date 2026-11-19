@@ -1,0 +1,2 @@
+# CI/CD
+The original merge-base Slim CI and incremental CD design is preserved. PRs run Salesforce CDC Python tests, SQLFluff and dbt changed-model validation. Deployment keeps production manifest state in S3, uses `state:modified+ --defer --favor-state`, publishes run_results/dbt docs, and invalidates CloudFront. GitHub Actions authenticates to AWS through OIDC. CDC checkpoints and dbt manifests are deliberately separate state systems.
